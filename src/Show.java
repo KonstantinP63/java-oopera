@@ -32,26 +32,26 @@ public class Show {
         }
         if (!listOfActors.contains(actor)) {
             listOfActors.add(actor);
-            return;
-        }
-        for (Actor act : listOfActors) {
-            if (act.equals(actor)) {
-                System.out.println("Такой актёр уже есть в списке и не может быть добавлен ещё раз.");
-            }
+        } else  {
+            System.out.println("Такой актёр уже есть в списке и не может быть добавлен ещё раз.");
         }
     }
 
     //Заменить одного актёра в спектакле на другого.
     public void changeActor(Actor actor, String surname) {
-        for (Actor act : listOfActors) {
-            if (!act.surname.equals(surname)) {
-                System.out.println("Такого актёра нет в списке." + '\n');
-                return;
-            } else {
-                listOfActors.remove(act);
-                listOfActors.add(actor);
-                return;
+        boolean isFound = false;
+        for (int i = 0; i < listOfActors.size(); i++) {
+            if (listOfActors.get(i).equals(surname)) {
+                if (isFound) {
+                    System.out.println("Актёр с фамилией " + surname + " уже заменён." + "\n");
+                    continue;
+                }
+                listOfActors.set(i, actor);
+                isFound = true;
             }
+        }
+        if (!isFound) {
+            System.out.println("Актёра с фамилией " + surname + " в списке нет." + "\n");
         }
     }
 }

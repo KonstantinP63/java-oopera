@@ -1,3 +1,5 @@
+import java.util.Objects;
+
 public class Director extends Person {
     protected int numberOfShows;
 
@@ -8,6 +10,18 @@ public class Director extends Person {
     //Распечатать информацию о режиссёре спектакля.
     public String printDirector (Director director) {
         return director.toString();
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        super.equals(numberOfShows);
+        Director director = (Director) o;
+        return numberOfShows == director.numberOfShows;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(numberOfShows);
     }
 
     @Override
