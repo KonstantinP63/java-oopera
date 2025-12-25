@@ -14,14 +14,16 @@ public class Director extends Person {
 
     @Override
     public boolean equals(Object o) {
-        super.equals(numberOfShows);
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
         Director director = (Director) o;
         return numberOfShows == director.numberOfShows;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hashCode(numberOfShows);
+        return Objects.hash(super.hashCode(), numberOfShows);
     }
 
     @Override
